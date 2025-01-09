@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap for a Surprise!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #fff0f6;
+            color: #ff69b4;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            display: none; /* Hidden initially */
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .tap-instruction {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ff69b4;
+            font-size: 1.8rem;
+            background-color: #ffe6f2;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            animation: float 4s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 10px;
+        }
+
+        .heart:after {
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Random heart positions and delays */
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 0.5s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: 2s; }
+    </style>
+</head>
+<body>
+    <!-- Tap Instruction -->
+    <div class="tap-instruction" id="tap-instruction">
+        Tap the screen for a surprise! 💖
+    </div>
+
+    <!-- Surprise Content -->
+    <div class="container" id="surprise-container">
+        <h1>Awak! Saya Nak Bagitahu Ni!</h1>
+        <p>❤️ Saya Rindu Awak !!!!! ❤️</p>
+        <img src="oyen.png" alt="Oyen Image">
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <script>
+        // Reveal content on tap
+        document.body.addEventListener('click', function() {
+            document.getElementById('tap-instruction').style.display = 'none';
+            document.getElementById('surprise-container').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
